@@ -1,0 +1,10 @@
+snippets:
+  - name: update and upgrade packages
+    keyword: apt-up
+    snippet: sudo apt update && sudo apt upgrade -y
+  - name: eza
+    keyword: l
+    snippet: eza -lha --icons --group-directories-first
+  - name: oj-bundle
+    keyword: ojb
+    snippet: oj-bundle -I ~/github/algo/lib
