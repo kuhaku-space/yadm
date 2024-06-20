@@ -12,7 +12,7 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 
 # Deno
-export DENO_INSTALL="$HOME/.deno"
+export DENO_INSTALL="$XDG_CACHE_HOME/deno"
 
 # zeno.zsh
 export ZENO_HOME="$XDG_CONFIG_HOME/zeno"
