@@ -52,3 +52,5 @@ if [[ -n $ZENO_LOADED ]]; then
 fi
 
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
+
+eval `keychain --eval --agents ssh ~/.ssh/id_ed25519`
