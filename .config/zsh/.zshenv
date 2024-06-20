@@ -17,6 +17,9 @@ export DENO_INSTALL="$HOME/.deno"
 # zeno.zsh
 export ZENO_HOME="$XDG_CONFIG_HOME/zeno"
 
+# WakaTime
+export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
+
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$DENO_INSTALL/bin"
