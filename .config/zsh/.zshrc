@@ -84,3 +84,4 @@ zle -N peco-projects
 zle -N peco_select_history
 bindkey '^]' peco-projects
 bindkey '^r' peco_select_history
+bindkey '^ ' autosuggest-accept
