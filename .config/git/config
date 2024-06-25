@@ -1,48 +1,55 @@
 [user]
-    email = kuhakuspace2000@gmail.com
-    name = kuhaku-space
+email = kuhakuspace2000@gmail.com
+name = kuhaku-space
+signingKey = ~/.ssh/signing-key.pub
 [core]
-    editor = code --wait
+editor = code --wait
+[gpg]
+format = ssh
+[commit]
+gpgsign = true
+[tag]
+gpgsign = true
 [merge]
-    ff = false
+ff = false
 [pull]
-    ff = only
+ff = only
 [push]
-    default = current
+default = current
 [init]
-    defaultBranch = main
+defaultBranch = main
 [gitflow "branch"]
-    master = main
+master = main
 [gitflow "prefix"]
-    versiontag = v
+versiontag = v
 [gitflow "init"]
-    defaults = true
+defaults = true
 [gitflow "feature.start"]
-    fetch = true
+fetch = true
 [gitflow "feature.finish"]
-    fetch = true
-    push = true
-    no-ff = true
+fetch = true
+push = true
+no-ff = true
 [gitflow "bugfix.start"]
-    fetch = true
+fetch = true
 [gitflow "bugfix.finish"]
-    fetch = true
-    push = true
-    no-ff = true
+fetch = true
+push = true
+no-ff = true
 [gitflow "release.start"]
-    fetch = true
+fetch = true
 [gitflow "release.finish"]
-    fetch = true
-    push = true
-    no-ff = true
+fetch = true
+push = true
+no-ff = true
 [alias]
-    i = flow init
-    ff = flow feature finish
-    fs = flow feature start
-    rf = flow release finish -n
-    rs = flow release start
-    rt = flow release finis
-    hf = flow hotfix finish -n
-    hs = flow hotfix start
-    bf = flow bugfix finish
-    bs = flow bugfix start
+i = flow init
+ff = flow feature finish
+fs = flow feature start
+rf = flow release finish -n
+rs = flow release start
+rt = flow release finis
+hf = flow hotfix finish -n
+hs = flow hotfix start
+bf = flow bugfix finish
+bs = flow bugfix start
