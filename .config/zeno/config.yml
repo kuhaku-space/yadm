@@ -5,6 +5,9 @@ snippets:
   - name: eza
     keyword: l
     snippet: eza -lha --icons --group-directories-first
+  - name: yadm
+    keyword: y
+    snippet: yadm
   - name: git
     keyword: g
     snippet: git
