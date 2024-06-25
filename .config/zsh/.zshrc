@@ -56,3 +56,31 @@ fi
 eval $(keychain --eval --agents ssh ~/.ssh/id_ed25519)
 
 source "$XDG_CONFIG_HOME/zsh/.aliases"
+
+function peco-projects() {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+
+setopt hist_ignore_all_dups
+
+function peco_select_history() {
+  local tac
+  if which tac >/dev/null; then
+    tac="tac"
+  else
+    tac="tail -r"
+  fi
+  BUFFER=$(fc -l -n 1 | eval $tac | peco --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle clear-screen
+}
+
+zle -N peco-projects
+zle -N peco_select_history
+bindkey '^]' peco-projects
+bindkey '^r' peco_select_history
