@@ -11,6 +11,9 @@ export SAVEHIST=10000
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 
+# Go
+export GOPATH="$XDG_DATA_HOME/go"
+
 # Deno
 export DENO_INSTALL="$XDG_CACHE_HOME/deno"
 
@@ -23,5 +26,6 @@ export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$DENO_INSTALL/bin"
+export PATH="$PATH:$GOPATH/bin"
 
 . "/home/kuhaku/.local/share/cargo/env"
