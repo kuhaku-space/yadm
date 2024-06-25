@@ -1,0 +1,15 @@
+# https://github.com/online-judge-tools/verification-helper
+alias ojd='cd-algo && rm -rf test/ && oj d'
+alias oj-bundle='\oj-bundle -I ~/github/algo/lib'
+alias ojb='find a.cpp &>/dev/null && oj-bundle a.cpp > main.cpp && g++ main.cpp -std=c++17'
+alias ojt='ojb && oj t -e 1e-9'
+alias ojs='ojb && oj s main.cpp'
+alias ojts='ojt && oj s main.cpp --yes'
+
+# Ubuntu
+alias sauu='sudo apt update && sudo apt upgrade -y'
+alias cd-algo='cd ~/algo'
+alias cd-lib='cd ~/github/algo'
+
+# WSL
+alias rm-zone='find . -name "*:Zone.Identifier" -type f -delete'
