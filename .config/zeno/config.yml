@@ -5,6 +5,46 @@ snippets:
   - name: eza
     keyword: l
     snippet: eza -lha --icons --group-directories-first
-  - name: oj-bundle
-    keyword: ojb
-    snippet: oj-bundle -I ~/github/algo/lib
+  - name: git
+    keyword: g
+    snippet: git
+  - name: git push
+    keyword: ps
+    snippet: push
+    context:
+      lbuffer: ^git\s
+  - name: git pull
+    keyword: pl
+    snippet: pull
+    context:
+      lbuffer: ^git\s
+  - name: git checkout
+    keyword: co
+    snippet: checkout
+    context:
+      lbuffer: ^git\s
+  - name: git branch
+    keyword: br
+    snippet: branch
+    context:
+      lbuffer: ^git\s
+  - name: git status
+    keyword: st
+    snippet: status
+    context:
+      lbuffer: ^git\s
+  - name: git switch
+    keyword: sw
+    snippet: switch
+    context:
+      lbuffer: ^git\s
+  - name: git switch -c
+    keyword: swc
+    snippet: switch
+    context:
+      lbuffer: ^git\s
+  - name: git commit message
+    keyword: cm
+    snippet: commit -m '{{commit_message}}'
+    context:
+      lbuffer: ^git\s
