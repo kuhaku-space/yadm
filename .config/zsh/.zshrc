@@ -30,7 +30,7 @@ export ZENO_GIT_TREE="tree"
 # export ZENO_GIT_TREE="exa --tree"
 
 if [[ -n $ZENO_LOADED ]]; then
-  bindkey ' '  zeno-auto-snippet
+  bindkey ' ' zeno-auto-snippet
 
   # fallback if snippet not matched (default: self-insert)
   # export ZENO_AUTO_SNIPPET_FALLBACK=self-insert
@@ -42,7 +42,7 @@ if [[ -n $ZENO_LOADED ]]; then
 
   # bindkey '^i' zeno-completion
 
-  bindkey '^x '  zeno-insert-space
+  bindkey '^x ' zeno-insert-space
   bindkey '^x^m' accept-line
   bindkey '^x^z' zeno-toggle-auto-snippet
 
@@ -53,4 +53,6 @@ fi
 
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
-eval `keychain --eval --agents ssh ~/.ssh/id_ed25519`
+eval $(keychain --eval --agents ssh ~/.ssh/id_ed25519)
+
+source "$XDG_CONFIG_HOME/zsh/.aliases"
