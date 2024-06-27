@@ -1,7 +1,12 @@
 # https://github.com/online-judge-tools/verification-helper
-alias ojd='cd-algo && rm -rf test/ && oj d'
-alias oj-bundle='\oj-bundle -I ~/github/algo/lib'
-alias ojb='find a.cpp &>/dev/null && oj-bundle a.cpp > main.cpp && g++ main.cpp -std=c++17'
+function bundle() {
+  oj-bundle -I $HOME/github/algo/lib $1 2>/dev/null | grep -v "^#line " | grep -v "^#pragma once" | tr -s "\n"
+}
+function compile() {
+  g++-12 $1 -std=gnu++20 -O2 -Wall -Wextra -mtune=native -march=native -fconstexpr-depth=2147483647 -fconstexpr-loop-limit=2147483647 -fconstexpr-ops-limit=2147483647
+}
+alias ojd='cd $HOME/algo && rm -rf test/ && oj d'
+alias ojb='find a.cpp &>/dev/null && bundle a.cpp > main.cpp && compile main.cpp '
 alias ojt='ojb && oj t -e 1e-9'
 alias ojs='ojb && oj s main.cpp'
 alias ojts='ojt && oj s main.cpp --yes'
