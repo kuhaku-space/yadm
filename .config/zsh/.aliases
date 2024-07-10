@@ -1,6 +1,6 @@
 # https://github.com/online-judge-tools/verification-helper
 function atcoder-bundle() {
-  oj-bundle -I $HOME/github/algo/lib $1 2>/dev/null | grep -v "^#line " | grep -v "^#pragma once" | tr -s "\n"
+  oj-bundle -I $HOME/ghq/github.com/kuhaku-space/algo/lib $1 2>/dev/null | grep -v "^#line " | grep -v "^#pragma once" | tr -s "\n"
 }
 
 function atcoder-compile() {
