@@ -1,20 +1,53 @@
 # https://github.com/online-judge-tools/verification-helper
-function bundle() {
+function atcoder-bundle() {
   oj-bundle -I $HOME/github/algo/lib $1 2>/dev/null | grep -v "^#line " | grep -v "^#pragma once" | tr -s "\n"
 }
-function compile() {
+
+function atcoder-compile() {
   g++-12 $1 -std=gnu++20 -O2 -Wall -Wextra -mtune=native -march=native -fconstexpr-depth=2147483647 -fconstexpr-loop-limit=2147483647 -fconstexpr-ops-limit=2147483647
 }
+
+function atcoder-test() {
+  find a.cpp &>/dev/null || return 1
+  atcoder-bundle a.cpp >main.cpp || return 1
+  atcoder-compile main.cpp || return 1
+  args=$(getopt e $*) || return 1
+  eval "set -- $args"
+
+  E_FLAG=0
+  for opt in "$@"; do
+    case $opt in
+    -e)
+      E_FLAG=1
+      shift
+      ;;
+    --)
+      shift
+      break
+      ;;
+    esac
+  done
+
+  COMMAND="oj t"
+  if [[ $E_FLAG = 1 ]]; then
+    COMMAND="$COMMAND -e 1e-9"
+  fi
+  eval "$COMMAND"
+}
+
+function atcoder-test-and-submit() {
+  atcoder-test "$*" || return 1
+  oj s main.cpp --yes
+}
+
 alias ojd='cd $HOME/algo && rm -rf test/ && oj d'
 alias ojb='find a.cpp &>/dev/null && bundle a.cpp > main.cpp && compile main.cpp '
-alias ojt='ojb && oj t -e 1e-9'
+alias ojt='atcoder-test'
 alias ojs='ojb && oj s main.cpp'
-alias ojts='ojt && oj s main.cpp --yes'
+alias ojts='atcoder-test-and-submit'
 
 # Ubuntu
-alias sauu='sudo apt update && sudo apt upgrade -y'
-alias cd-algo='cd ~/algo'
-alias cd-lib='cd ~/github/algo'
+alias apt-up='sudo apt update && sudo apt upgrade -y'
 
 # WSL
 alias rm-zone='find . -name "*:Zone.Identifier" -type f -delete'
