@@ -67,6 +67,7 @@ function peco-projects() {
 }
 
 setopt hist_ignore_all_dups
+setopt nonomatch
 
 function peco_select_history() {
   local tac
