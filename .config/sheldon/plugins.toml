@@ -23,9 +23,6 @@ github = "chriskempson/base16-shell"
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
-[plugins.starship]
-inline = 'eval "$(starship init zsh)"'
-
 [plugins.zeno]
 github = 'yuki-yano/zeno.zsh'
 
@@ -40,3 +37,9 @@ apply = ["defer"]
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
 apply = ["defer"]
+
+[plugins.rtx]
+inline = 'eval "$(rtx activate zsh)"'
+
+[plugins.starship]
+inline = 'eval "$(starship init zsh)"'
