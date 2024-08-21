@@ -12,6 +12,8 @@ gpgsign = true
 gpgsign = true
 [merge]
 ff = false
+[fetch]
+prune = true
 [pull]
 ff = only
 [push]
