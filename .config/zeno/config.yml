@@ -46,6 +46,11 @@ snippets:
     snippet: switch
     context:
       lbuffer: ^git\s
+  - name: git switch -c feature/
+    keyword: f
+    snippet: feature/
+    context:
+      lbuffer: ^git\sswitch\s-c\s
   - name: git commit message
     keyword: cm
     snippet: commit -m '{{commit_message}}'
