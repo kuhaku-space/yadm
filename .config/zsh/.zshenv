@@ -23,6 +23,10 @@ export ZENO_HOME="$XDG_CONFIG_HOME/zeno"
 # WakaTime
 export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 
+# OpenSSL
+export OPENSSL_LIB_DIR="/usr/lib/x86_64-linux-gnu/"
+export OPENSSL_INCLUDE_DIR="/usr/include/openssl/"
+
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$DENO_INSTALL/bin"
