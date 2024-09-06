@@ -1,5 +1,6 @@
 autoload -Uz compinit && compinit
 
+# See: https://qiita.com/nacika_ins/items/465e89a7b3fbeb373605
 eval "$(sheldon source)"
 eval "$(zoxide init zsh)"
 
