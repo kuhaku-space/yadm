@@ -53,8 +53,7 @@ fi
 
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
-eval $(keychain --eval --nogui --quiet --agents ssh ~/.ssh/id_ed25519)
-eval $(keychain --eval --nogui --quiet --agents ssh ~/.ssh/signing-key)
+eval $(keychain --eval --nogui --quiet --agents ssh ~/.ssh/id_ed25519 ~/.ssh/signing-key)
 
 source "$XDG_CONFIG_HOME/zsh/.aliases"
 
