@@ -40,7 +40,7 @@ function atcoder-test-and-submit() {
   oj s main.cpp --yes
 }
 
-alias ojd='cd $HOME/algo && rm -rf test/ && oj d'
+alias ojd='cd $HOME/ghq/github.com/kuhaku-space/algo/workspace && rm -rf test/ && oj d'
 alias ojb='find a.cpp &>/dev/null && atcoder-bundle a.cpp >main.cpp && atcoder-compile main.cpp'
 alias ojt='atcoder-test'
 alias ojs='ojb && oj s main.cpp'
