@@ -19,6 +19,9 @@ export DENO_INSTALL="$XDG_CACHE_HOME/deno"
 
 # zeno.zsh
 export ZENO_HOME="$XDG_CONFIG_HOME/zeno"
+export ZENO_ENABLE_SOCK=1
+export ZENO_GIT_CAT="bat --color=always"
+export ZENO_GIT_TREE="exa --tree"
 
 # WakaTime
 export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
