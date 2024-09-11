@@ -43,7 +43,7 @@ snippets:
       lbuffer: ^git\s
   - name: git switch -c
     keyword: swc
-    snippet: switch
+    snippet: switch -c
     context:
       lbuffer: ^git\s
   - name: git switch -c feature/
