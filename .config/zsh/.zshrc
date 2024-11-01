@@ -1,3 +1,22 @@
+function is_dirty() {
+  test -n "$(yadm status --porcelain)" ||
+    ! yadm diff --exit-code --stat --cached origin/main >/dev/null
+}
+
+function warn_dirty() {
+  local dotfiles_dir=~/dotfiles
+  if is_dirty $?; then
+    echo -e "\e[1;36m[[dotfiles]]\e[m"
+    echo -e "\e[1;33m[warn] DIRTY DOTFILES\e[m"
+    echo -e "\e[1;33m    -> Push your local changes in dotfiles\e[m"
+  fi
+}
+
+if [[ ! -o login ]]; then
+  # Avoid duplicate warning (See .config/zsh/.zprofile)
+  warn_dirty
+fi
+
 autoload -Uz compinit && compinit
 
 # See: https://qiita.com/nacika_ins/items/465e89a7b3fbeb373605
