@@ -30,6 +30,10 @@ export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 export OPENSSL_LIB_DIR="/usr/lib/x86_64-linux-gnu/"
 export OPENSSL_INCLUDE_DIR="/usr/include/openssl/"
 
+# Node.js
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$DENO_INSTALL/bin"
