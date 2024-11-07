@@ -34,7 +34,7 @@ if [[ -n $ZENO_LOADED ]]; then
 
   bindkey '^m' zeno-auto-snippet-and-accept-line
 
-  bindkey '^i' zeno-completion
+  # bindkey '^i' zeno-completion
 
   bindkey '^x ' zeno-insert-space
   bindkey '^x^m' accept-line
