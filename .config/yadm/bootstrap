@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cd $HOME
+
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y build-essential libssl-dev cmake
+cargo install starship
+cargo install sheldom
+cargo install mise
