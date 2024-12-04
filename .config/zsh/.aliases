@@ -40,11 +40,26 @@ function atcoder-test-and-submit() {
   oj s main.cpp --yes
 }
 
+function atcoder-randam-checker() {
+  find a.cpp &>/dev/null || return 1
+  atcoder-bundle a.cpp >main.cpp || return 1
+  atcoder-compile main.cpp || return 1
+  (
+    cd checker
+    find test.cpp &>/dev/null || return 1
+    atcoder-bundle test.cpp >test/main.cpp || return 1
+    cd test
+    atcoder-compile main.cpp || return 1
+    ./a.out
+  )
+}
+
 alias ojd='cd $HOME/ghq/github.com/kuhaku-space/algo/workspace && rm -rf test/ && oj d'
 alias ojb='find a.cpp &>/dev/null && atcoder-bundle a.cpp >main.cpp && atcoder-compile main.cpp'
 alias ojt='atcoder-test'
 alias ojs='ojb && oj s main.cpp'
 alias ojts='atcoder-test-and-submit'
+alias ojrc='atcoder-randam-checker'
 
 # Ubuntu
 alias apt-up='sudo apt update && sudo apt upgrade -y'
