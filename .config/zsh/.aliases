@@ -61,8 +61,5 @@ alias ojs='ojb && oj s main.cpp'
 alias ojts='atcoder-test-and-submit'
 alias ojrc='atcoder-randam-checker'
 
-# Ubuntu
-alias apt-up='sudo apt update && sudo apt upgrade -y'
-
 # WSL
 alias rm-zone='find . -name "*:Zone.Identifier" -type f -delete'
