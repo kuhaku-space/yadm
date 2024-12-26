@@ -20,39 +20,5 @@ ff = only
 default = current
 [init]
 defaultBranch = main
-[gitflow "branch"]
-master = main
-[gitflow "prefix"]
-versiontag = v
-[gitflow "init"]
-defaults = true
-[gitflow "feature.start"]
-fetch = true
-[gitflow "feature.finish"]
-fetch = true
-push = true
-no-ff = true
-[gitflow "bugfix.start"]
-fetch = true
-[gitflow "bugfix.finish"]
-fetch = true
-push = true
-no-ff = true
-[gitflow "release.start"]
-fetch = true
-[gitflow "release.finish"]
-fetch = true
-push = true
-no-ff = true
 [alias]
-i = flow init
-ff = flow feature finish
-fs = flow feature start
-rf = flow release finish -n
-rs = flow release start
-rt = flow release finis
-hf = flow hotfix finish -n
-hs = flow hotfix start
-bf = flow bugfix finish
-bs = flow bugfix start
 delete-merged-branch = "!f () { git checkout $1; git pull; git branch --merged|egrep -v '\\*|develop|main'|xargs git branch -d; };f"
