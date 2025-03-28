@@ -4,7 +4,7 @@ function is_dirty() {
 }
 
 function warn_dirty() {
-  local dotfiles_dir=~/dotfiles
+  local dotfiles_dir=$XDG_DATA_HOME/yadm/repo.git
   if is_dirty $?; then
     echo -e "\e[1;36m[[dotfiles]]\e[m"
     echo -e "\e[1;33m[warn] DIRTY DOTFILES\e[m"
