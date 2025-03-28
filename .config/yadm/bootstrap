@@ -3,7 +3,7 @@
 cd $HOME
 
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y build-essential libssl-dev libclang-dev cmake keychain zsh
+sudo apt install -y build-essential libssl-dev libclang-dev cmake jq keychain zsh
 if [ $SHELL != "/bin/zsh" ]; then
   chsh -s /bin/zsh
 fi
@@ -28,7 +28,7 @@ if ! command -v ghq >/dev/null 2>&1; then
   mise i ghq
   mise u --global ghq
 fi
-cargo install bat eza sheldon starship zoxide
+cargo install bat deno eza sheldon starship zoxide
 if ! command -v fzf >/dev/null 2>&1; then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.local/bin/.fzf
   ~/.local/bin/.fzf/install --xdg --no-key-bindings --no-completion --no-update-rc --no-bash --no-fish
