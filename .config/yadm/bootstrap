@@ -3,8 +3,30 @@
 cd $HOME
 
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y build-essential libssl-dev cmake
-cargo install starship
-cargo install sheldom
-cargo install mise
-cargo install eza
+sudo apt install -y build-essential libssl-dev libclang-dev cmake keychain zsh
+if [ $SHELL != "/bin/zsh" ]; then
+  chsh -s /bin/zsh
+fi
+if [ ! -e $HOME/.ssh/id_ed25519 ]; then
+  ssh-keygen -a 128 -f $HOME/.ssh/id_ed25519 -C "kuhakuspace2000@gmail.com"
+fi
+if [ ! -e $HOME/.ssh/signing-key ]; then
+  ssh-keygen -a 128 -f $HOME/.ssh/signing-key -C "kuhakuspace2000@gmail.com"
+fi
+if tail -n 1 /etc/zsh/zshenv | grep -vq "export ZDOTDIR"; then
+  echo "\nexport ZDOTDIR=$HOME/.config/zsh" | sudo tee -a /etc/zsh/zshenv
+fi
+. $HOME/.config/zsh/.zshenv
+if ! command -v mise >/dev/null 2>&1; then
+  curl https://mise.run | sh
+fi
+if ! command -v cargo >/dev/null 2>&1; then
+  mise i rust
+  mise u --global rust
+  cargo install bat eza sheldon starship zoxide
+fi
+if ! command -v fzf >/dev/null 2>&1; then
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.local/bin/.fzf
+  ~/.local/bin/.fzf/install --xdg --no-key-bindings --no-completion --no-update-rc --no-bash --no-fish
+fi
+exec $SHELL -l
