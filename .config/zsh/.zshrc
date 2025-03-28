@@ -4,7 +4,6 @@ function is_dirty() {
 }
 
 function warn_dirty() {
-  local dotfiles_dir=$XDG_DATA_HOME/yadm/repo.git
   if is_dirty $?; then
     echo -e "\e[1;36m[[dotfiles]]\e[m"
     echo -e "\e[1;33m[warn] DIRTY DOTFILES\e[m"
@@ -17,7 +16,11 @@ if [[ ! -o login ]]; then
   warn_dirty
 fi
 
-autoload -Uz compinit && compinit
+mkdir -p $XDG_CACHE_HOME/zsh $XDG_STATE_HOME/zsh
+autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+if [[ -f $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION ]]; then
+    zcompile $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
+fi
 
 # See: https://qiita.com/nacika_ins/items/465e89a7b3fbeb373605
 eval "$(sheldon source)"
