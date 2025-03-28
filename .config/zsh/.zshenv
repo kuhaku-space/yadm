@@ -34,6 +34,9 @@ export OPENSSL_INCLUDE_DIR="/usr/include/openssl/"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 
+# compinit
+skip_global_compinit=1
+
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$DENO_INSTALL/bin"
