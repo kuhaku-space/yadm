@@ -38,5 +38,4 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$DENO_INSTALL/bin"
 export PATH="$PATH:$GOPATH/bin"
-
-. "/home/kuhaku/.local/share/cargo/env"
+export PATH="$PATH:$CARGO_HOME/bin"
