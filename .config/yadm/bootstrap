@@ -23,8 +23,8 @@ fi
 if ! command -v cargo >/dev/null 2>&1; then
   mise i rust
   mise u --global rust
-  cargo install bat eza sheldon starship zoxide
 fi
+cargo install bat eza sheldon starship zoxide
 if ! command -v fzf >/dev/null 2>&1; then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.local/bin/.fzf
   ~/.local/bin/.fzf/install --xdg --no-key-bindings --no-completion --no-update-rc --no-bash --no-fish
