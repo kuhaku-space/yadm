@@ -7,33 +7,19 @@ sudo apt install -y build-essential libssl-dev libclang-dev cmake jq keychain zs
 sudo apt autoremove -y
 sudo apt autoclean -y
 sudo apt clean -y
-if [ $SHELL != "/bin/zsh" ]; then
-  chsh -s /bin/zsh
-fi
-if [ ! -e $HOME/.ssh/id_ed25519 ]; then
-  ssh-keygen -a 128 -f $HOME/.ssh/id_ed25519 -C "kuhakuspace2000@gmail.com"
-fi
-if [ ! -e $HOME/.ssh/signing-key ]; then
-  ssh-keygen -a 128 -f $HOME/.ssh/signing-key -C "kuhakuspace2000@gmail.com"
-fi
-if tail -n 1 /etc/zsh/zshenv | grep -vq "export ZDOTDIR"; then
-  echo "\nexport ZDOTDIR=$HOME/.config/zsh" | sudo tee -a /etc/zsh/zshenv
-fi
+
+[ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh
+[ -e "$HOME/.ssh/id_ed25519" ] || ssh-keygen -a 128 -f "$HOME/.ssh/id_ed25519" -C "kuhakuspace2000@gmail.com"
+[ -e "$HOME/.ssh/signing-key" ] || ssh-keygen -a 128 -f "$HOME/.ssh/signing-key" -C "kuhakuspace2000@gmail.com"
+tail -n 1 /etc/zsh/zshenv | grep -vq "export ZDOTDIR" && echo "\nexport ZDOTDIR=$HOME/.config/zsh" | sudo tee -a /etc/zsh/zshenv
 . $HOME/.config/zsh/.zshenv
-if ! command -v mise >/dev/null 2>&1; then
-  curl https://mise.run | sh
-fi
-if ! command -v cargo >/dev/null 2>&1; then
-  mise i rust
-  mise u --global rust
-fi
-if ! command -v ghq >/dev/null 2>&1; then
-  mise i ghq
-  mise u --global ghq
-fi
-cargo install bat deno eza sheldon starship zoxide
-if ! command -v fzf >/dev/null 2>&1; then
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.local/bin/.fzf
-  ~/.local/bin/.fzf/install --xdg --no-key-bindings --no-completion --no-update-rc --no-bash --no-fish
-fi
+command -v mise >/dev/null || curl https://mise.run | sh
+command -v bat >/dev/null || mise u --global bat
+command -v deno >/dev/null || mise u --global deno
+command -v fzf >/dev/null || mise u --global fzf
+command -v ghq >/dev/null || mise u --global ghq
+command -v zoxide >/dev/null || mise u --global zpxide
+command -v cargo >/dev/null || mise u --global rust
+mise up
+cargo install sheldon starship zoxide
 exec $SHELL -l
