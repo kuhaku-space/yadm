@@ -23,6 +23,9 @@ export ZENO_ENABLE_SOCK=1
 export ZENO_GIT_CAT="bat --color=always"
 export ZENO_GIT_TREE="exa --tree"
 
+# fzf
+export FZF_DEFAULT_OPTS="--reverse"
+
 # WakaTime
 export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 
