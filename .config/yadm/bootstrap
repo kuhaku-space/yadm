@@ -18,6 +18,7 @@ command -v bat >/dev/null || mise u --global bat
 command -v deno >/dev/null || mise u --global deno
 command -v fzf >/dev/null || mise u --global fzf
 command -v ghq >/dev/null || mise u --global ghq
+command -v glow >/dev/null || mise u --global glow
 command -v zoxide >/dev/null || mise u --global zpxide
 command -v cargo >/dev/null || mise u --global rust
 mise up
