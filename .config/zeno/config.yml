@@ -56,3 +56,13 @@ snippets:
     snippet: commit -m '{{commit_message}}'
     context:
       lbuffer: ^git\s
+  - name: yadm status
+    keyword: st
+    snippet: status
+    context:
+      lbuffer: ^yadm\s
+  - name: yadm commit message
+    keyword: cm
+    snippet: commit -m '{{commit_message}}'
+    context:
+      lbuffer: ^yadm\s
