@@ -19,8 +19,8 @@ command -v deno >/dev/null || mise u --global deno
 command -v fzf >/dev/null || mise u --global fzf
 command -v ghq >/dev/null || mise u --global ghq
 command -v glow >/dev/null || mise u --global glow
-command -v zoxide >/dev/null || mise u --global zpxide
+command -v zoxide >/dev/null || mise u --global zoxide
 command -v cargo >/dev/null || mise u --global rust
 mise up
-cargo install sheldon starship zoxide
+cargo install sheldon starship
 exec $SHELL -l
