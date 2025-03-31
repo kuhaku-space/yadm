@@ -66,3 +66,8 @@ snippets:
     snippet: commit -m '{{commit_message}}'
     context:
       lbuffer: ^yadm\s
+  - name: yadm add and commit message
+    keyword: cma
+    snippet: commit -a -m '{{commit_message}}'
+    context:
+      lbuffer: ^yadm\s
