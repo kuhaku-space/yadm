@@ -4,6 +4,9 @@ cd $HOME
 
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y build-essential libssl-dev libclang-dev cmake jq keychain zsh
+sudo apt autoremove -y
+sudo apt autoclean -y
+sudo apt clean -y
 if [ $SHELL != "/bin/zsh" ]; then
   chsh -s /bin/zsh
 fi
