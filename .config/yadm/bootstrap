@@ -1,26 +1,73 @@
-#!/bin/sh
+#!/usr/bin/env sh
+
+check_command() {
+    return $(command -v $1 $ >/dev/null)
+}
+
+request_response() {
+    printf "$1 "
+    read response
+}
+
+confirm() {
+    local prompt="${1:-Are you sure you want to continue? [Y/n]}"
+
+    request_response "$prompt"
+    case "$response" in
+    [yY][eE][sS] | [yY] | "")
+        return 0 # User confirmed, continue
+        ;;
+    *)
+        return 1 # User canceled, exit with an error code
+        ;;
+    esac
+}
 
 cd $HOME
 
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y build-essential libssl-dev libclang-dev cmake jq keychain zsh
-sudo apt autoremove -y
-sudo apt autoclean -y
-sudo apt clean -y
+printf "\e[1;36mInstall dependencies\e[m\n"
+if ! check_command apt; then
+  printf "apt is not installed. Ignoring...\n"
+  exit 0
+elif confirm "apt is installed. Would you like to update it? [Y/n]"; then
+  printf "Updating apt...\n"
+  sudo apt update && sudo apt upgrade -y
+fi
+if confirm "Would you like to install dependencies? [Y/n]"; then
+  sudo apt update
+  sudo apt install -y build-essential libssl-dev libclang-dev cmake jq keychain zsh
+  sudo apt autoremove -y
+  sudo apt autoclean -y
+  sudo apt clean -y
+fi
 
+printf "\e[1;36mChange default shell to zsh\e[m\n"
 [ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh
+
+printf "\e[1;36mGenerate SSH keys\e[m\n"
 [ -e "$HOME/.ssh/id_ed25519" ] || ssh-keygen -a 128 -f "$HOME/.ssh/id_ed25519" -C "kuhakuspace2000@gmail.com"
 [ -e "$HOME/.ssh/signing-key" ] || ssh-keygen -a 128 -f "$HOME/.ssh/signing-key" -C "kuhakuspace2000@gmail.com"
+
+printf "\e[1;36mAppend ZDOTDIR to zshenv\e[m\n"
 tail -n 1 /etc/zsh/zshenv | grep -vq "export ZDOTDIR" && echo "\nexport ZDOTDIR=$HOME/.config/zsh" | sudo tee -a /etc/zsh/zshenv
+
+printf "\e[1;36mSource zshenv configuration file\e[m\n"
 . $HOME/.config/zsh/.zshenv
+
+printf "\e[1;36mInstall tools\e[m\n"
 command -v mise >/dev/null || curl https://mise.run | sh
-command -v bat >/dev/null || mise u --global bat
-command -v deno >/dev/null || mise u --global deno
-command -v fzf >/dev/null || mise u --global fzf
-command -v ghq >/dev/null || mise u --global ghq
-command -v glow >/dev/null || mise u --global glow
-command -v zoxide >/dev/null || mise u --global zoxide
-command -v cargo >/dev/null || mise u --global rust
+command -v bat >/dev/null || mise u -g bat
+command -v deno >/dev/null || mise u -g deno
+command -v eza >/dev/null || mise u -g eza
+command -v fzf >/dev/null || mise u -g fzf
+command -v ghq >/dev/null || mise u -g ghq
+command -v glow >/dev/null || mise u -g glow
+command -v cargo >/dev/null || mise u -g rust
+command -v starship >/dev/null || mise u -g starship
+command -v zoxide >/dev/null || mise u -g zoxide
 mise up
-cargo install sheldon starship
-exec $SHELL -l
+cargo install cargo-binstall
+cargo binstall sheldon
+
+printf "\e[1;36mMake directories\e[m\n"
+mkdir -p $HOME/.local/state/zsh $HOME/.cache/zsh
