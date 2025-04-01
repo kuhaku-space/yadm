@@ -16,7 +16,6 @@ if [[ ! -o login ]]; then
   warn_dirty
 fi
 
-mkdir -p $XDG_CACHE_HOME/zsh $XDG_STATE_HOME/zsh
 autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 if [[ -f $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION ]]; then
     zcompile $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
@@ -33,11 +32,10 @@ if [[ -n $ZENO_LOADED ]]; then
   bindkey '^x' zeno-insert-snippet
 fi
 
-eval $(keychain --eval --nogui --quiet --agents ssh ~/.ssh/id_ed25519)
-eval $(keychain --eval --nogui --quiet --agents ssh ~/.ssh/signing-key)
+# eval $(keychain --eval --nogui --quiet --agents ssh ~/.ssh/id_ed25519)
+# eval $(keychain --eval --nogui --quiet --agents ssh ~/.ssh/signing-key)
 
 source "$XDG_CONFIG_HOME/zsh/.aliases"
-source "$XDG_CONFIG_HOME/fzf/fzf.zsh"
 
 setopt auto_cd
 setopt hist_ignore_all_dups
