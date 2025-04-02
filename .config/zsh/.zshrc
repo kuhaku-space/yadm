@@ -11,29 +11,12 @@ function warn_dirty() {
   fi
 }
 
-if [[ ! -o login ]]; then
-  # Avoid duplicate warning (See .config/zsh/.zprofile)
-  warn_dirty
-fi
+[[ -o login ]] || warn_dirty
 
-autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
-if [[ -f $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION ]]; then
-    zcompile $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
-fi
-
-# See: https://qiita.com/nacika_ins/items/465e89a7b3fbeb373605
 eval "$(sheldon source)"
-eval "$(zoxide init zsh)"
 
-if [[ -n $ZENO_LOADED ]]; then
-  bindkey ' ' zeno-auto-snippet
-  bindkey '^]' zeno-ghq-cd
-  bindkey '^r' zeno-history-selection
-  bindkey '^x' zeno-insert-snippet
-fi
-
-# eval $(keychain --eval --nogui --quiet --agents ssh ~/.ssh/id_ed25519)
-# eval $(keychain --eval --nogui --quiet --agents ssh ~/.ssh/signing-key)
+eval $(keychain --eval --nogui --quiet --agents ssh ~/.ssh/id_ed25519)
+eval $(keychain --eval --nogui --quiet --agents ssh ~/.ssh/signing-key)
 
 source "$XDG_CONFIG_HOME/zsh/.aliases"
 
