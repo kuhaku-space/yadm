@@ -63,5 +63,3 @@ alias ojrc='atcoder-randam-checker'
 
 # WSL
 alias rm-zone='find . -name "*:Zone.Identifier" -type f -delete'
-alias relogin='exec $SHELL -l'
-alias reload='exec $SHELL'
