@@ -2,6 +2,15 @@ snippets:
   - name: update and upgrade packages
     keyword: apt-up
     snippet: sudo apt update && sudo apt upgrade -y
+  - name: benchmark
+    keyword: benchmark
+    snippet: hyperfine -w 5 -r 50 'zsh -i -c exit'
+  - name: relogin
+    keyword: relogin
+    snippet: exec $SHELL -l
+  - name: reload
+    keyword: reload
+    snippet: exec $SHELL
   - name: eza
     keyword: l
     snippet: eza -lha --icons --group-directories-first
