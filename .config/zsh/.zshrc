@@ -15,8 +15,7 @@ function warn_dirty() {
 
 eval "$(sheldon source)"
 
-eval $(keychain --eval --nogui --quiet --agents ssh ~/.ssh/id_ed25519)
-eval $(keychain --eval --nogui --quiet --agents ssh ~/.ssh/signing-key)
+ssh-add -l 2>/dev/null | grep -q 'SHA256' || eval $(keychain --eval --nogui --quiet --agents ssh ~/.ssh/id_ed25519 ~/.ssh/signing-key)
 
 source "$XDG_CONFIG_HOME/zsh/.aliases"
 
