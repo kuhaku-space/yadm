@@ -1,26 +1,26 @@
 #!/usr/bin/env sh
 
 check_command() {
-    return $(command -v $1 $ >/dev/null)
+  return $(command -v $1 $ >/dev/null)
 }
 
 request_response() {
-    printf "$1 "
-    read response
+  printf "$1 "
+  read response
 }
 
 confirm() {
-    local prompt="${1:-Are you sure you want to continue? [Y/n]}"
+  local prompt="${1:-Are you sure you want to continue? [Y/n]}"
 
-    request_response "$prompt"
-    case "$response" in
-    [yY][eE][sS] | [yY] | "")
-        return 0 # User confirmed, continue
-        ;;
-    *)
-        return 1 # User canceled, exit with an error code
-        ;;
-    esac
+  request_response "$prompt"
+  case "$response" in
+  [yY][eE][sS] | [yY] | "")
+    return 0 # User confirmed, continue
+    ;;
+  *)
+    return 1 # User canceled, exit with an error code
+    ;;
+  esac
 }
 
 cd $HOME
@@ -67,7 +67,7 @@ command -v cargo >/dev/null || mise u -g rust
 command -v starship >/dev/null || mise u -g starship
 command -v zoxide >/dev/null || mise u -g zoxide
 mise up
-cargo install cargo-binstall
+cargo install cargo-binstall --locked
 cargo binstall sheldon
 
 printf "\e[1;36mMake directories\e[m\n"
