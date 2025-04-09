@@ -35,3 +35,4 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 skip_global_compinit=1
 
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$CARGO_HOME/bin"
