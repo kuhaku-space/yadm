@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 
 check_command() {
-  return $(command -v $1 $ >/dev/null)
+  command -v "$1" >/dev/null 2>&1
+  return $?
 }
 
 request_response() {
@@ -31,14 +32,14 @@ if ! check_command apt; then
   exit 0
 elif confirm "apt is installed. Would you like to update it? [Y/n]"; then
   printf "Updating apt...\n"
-  sudo apt update -q && sudo apt upgrade -q -y
+  sudo apt update -qq && sudo apt upgrade -qq -y
 fi
 if confirm "Would you like to install dependencies? [Y/n]"; then
-  sudo apt update -q
-  sudo apt install -q -y build-essential libssl-dev libclang-dev cmake jq keychain zsh
-  sudo apt autoremove -q -y
-  sudo apt autoclean -q -y
-  sudo apt clean -q -y
+  sudo apt update -qq
+  sudo apt install -qq -y build-essential libssl-dev libclang-dev cmake jq keychain zsh
+  sudo apt autoremove -qq -y
+  sudo apt autoclean -qq -y
+  sudo apt clean -qq -y
 fi
 
 printf "\e[1;36mChange default shell to zsh\e[m\n"
@@ -55,18 +56,19 @@ printf "\e[1;36mSource zshenv configuration file\e[m\n"
 . $HOME/.config/zsh/.zshenv
 
 printf "\e[1;36mInstall tools\e[m\n"
-command -v mise >/dev/null || curl https://mise.run | sh
-command -v bat >/dev/null || mise u -g bat
-command -v deno >/dev/null || mise u -g deno
-command -v eza >/dev/null || mise u -g eza
-command -v fzf >/dev/null || mise u -g fzf
-command -v ghq >/dev/null || mise u -g ghq
-command -v glow >/dev/null || mise u -g glow
-command -v hyperfine >/dev/null || mise u -g hyperfine
-command -v nvim >/dev/null || mise u -g neovim
-command -v cargo >/dev/null || mise u -g rust
-command -v starship >/dev/null || mise u -g starship
-command -v zoxide >/dev/null || mise u -g zoxide
+check_command mise      || curl https://mise.run | sh
+check_command bat       || mise u -g bat
+check_command deno      || mise u -g deno
+check_command eza       || mise u -g eza
+check_command fzf       || mise u -g fzf
+check_command ghq       || mise u -g ghq
+check_command glow      || mise u -g glow
+check_command hyperfine || mise u -g hyperfine
+check_command nvim      || mise u -g neovim
+check_command cargo     || mise u -g rust
+check_command starship  || mise u -g starship
+check_command zoxide    || mise u -g zoxide
+mise self-update -y
 mise up
 cargo install cargo-binstall --locked
 cargo binstall sheldon
