@@ -31,14 +31,14 @@ if ! check_command apt; then
   exit 0
 elif confirm "apt is installed. Would you like to update it? [Y/n]"; then
   printf "Updating apt...\n"
-  sudo apt update && sudo apt upgrade -y
+  sudo apt update -q && sudo apt upgrade -q -y
 fi
 if confirm "Would you like to install dependencies? [Y/n]"; then
-  sudo apt update
-  sudo apt install -y build-essential libssl-dev libclang-dev cmake jq keychain zsh
-  sudo apt autoremove -y
-  sudo apt autoclean -y
-  sudo apt clean -y
+  sudo apt update -q
+  sudo apt install -q -y build-essential libssl-dev libclang-dev cmake jq keychain zsh
+  sudo apt autoremove -q -y
+  sudo apt autoclean -q -y
+  sudo apt clean -q -y
 fi
 
 printf "\e[1;36mChange default shell to zsh\e[m\n"
@@ -63,6 +63,7 @@ command -v fzf >/dev/null || mise u -g fzf
 command -v ghq >/dev/null || mise u -g ghq
 command -v glow >/dev/null || mise u -g glow
 command -v hyperfine >/dev/null || mise u -g hyperfine
+command -v nvim >/dev/null || mise u -g neovim
 command -v cargo >/dev/null || mise u -g rust
 command -v starship >/dev/null || mise u -g starship
 command -v zoxide >/dev/null || mise u -g zoxide
