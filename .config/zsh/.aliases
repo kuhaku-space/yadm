@@ -40,7 +40,7 @@ function atcoder-test-and-submit() {
   oj s main.cpp --yes
 }
 
-function atcoder-randam-checker() {
+function atcoder-random-checker() {
   find a.cpp &>/dev/null || return 1
   atcoder-bundle a.cpp >main.cpp || return 1
   atcoder-compile main.cpp || return 1
@@ -59,7 +59,7 @@ alias ojb='find a.cpp &>/dev/null && atcoder-bundle a.cpp >main.cpp && atcoder-c
 alias ojt='atcoder-test'
 alias ojs='ojb && oj s main.cpp'
 alias ojts='atcoder-test-and-submit'
-alias ojrc='atcoder-randam-checker'
+alias ojrc='atcoder-random-checker'
 
 # WSL
 alias rm-zone='find . -name "*:Zone.Identifier" -type f -delete'
