@@ -4,7 +4,7 @@ function atcoder-bundle() {
 }
 
 function atcoder-compile() {
-  g++-12 $1 -std=gnu++20 -O2 -Wall -Wextra -mtune=native -march=native -fconstexpr-depth=2147483647 -fconstexpr-loop-limit=2147483647 -fconstexpr-ops-limit=2147483647
+  g++-12 $1 -std=gnu++20 -O2 -Wall -Wextra -DATCODER -mtune=native -march=native -fconstexpr-depth=2147483647 -fconstexpr-loop-limit=2147483647 -fconstexpr-ops-limit=2147483647
 }
 
 function atcoder-test() {
