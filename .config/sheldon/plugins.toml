@@ -49,13 +49,5 @@ inline = 'eval "$(starship init zsh)"'
 inline = 'eval "$(zoxide init zsh)"'
 
 [plugins.zeno]
-github = 'yuki-yano/zeno.zsh'
-hooks.post = """
-__zeno_bindkey() {
-  bindkey ' ' zeno-auto-snippet
-  bindkey '^]' zeno-ghq-cd
-  bindkey '^r' zeno-history-selection
-  bindkey '^x' zeno-insert-snippet
-}
-zsh-defer -a -t0.01 __zeno_bindkey
-"""
+github = "yuki-yano/zeno.zsh"
+apply = ["source"]

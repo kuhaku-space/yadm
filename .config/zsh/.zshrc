@@ -24,3 +24,8 @@ setopt hist_ignore_all_dups
 setopt nonomatch
 
 bindkey '^ ' autosuggest-accept
+
+bindkey ' ' zeno-auto-snippet
+bindkey '^]' zeno-ghq-cd
+bindkey '^r' zeno-history-selection
+bindkey '^x' zeno-insert-snippet
