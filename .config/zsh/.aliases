@@ -35,9 +35,9 @@ function atcoder-test() {
   eval "$COMMAND"
 }
 
-function atcoder-test-and-submit() {
+function atcoder-test-and-clip() {
   atcoder-test "$*" || return 1
-  oj s main.cpp --yes
+  xclip -selection clipboard < main.cpp
 }
 
 function atcoder-random-checker() {
@@ -58,7 +58,7 @@ alias ojd='cd $HOME/ghq/github.com/kuhaku-space/algo/workspace && rm -rf test/ &
 alias ojb='find a.cpp &>/dev/null && atcoder-bundle a.cpp >main.cpp && atcoder-compile main.cpp'
 alias ojt='atcoder-test'
 alias ojs='ojb && oj s main.cpp'
-alias ojts='atcoder-test-and-submit'
+alias ojtc='atcoder-test-and-clip'
 alias ojrc='atcoder-random-checker'
 
 # WSL
