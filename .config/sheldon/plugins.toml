@@ -39,9 +39,6 @@ github = "zsh-users/zsh-autosuggestions"
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
 
-[plugins.mise]
-inline = 'eval "$(mise activate zsh)"'
-
 [plugins.starship]
 inline = 'eval "$(starship init zsh)"'
 
