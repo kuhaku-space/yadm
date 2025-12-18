@@ -13,6 +13,7 @@ function warn_dirty() {
 
 [[ -o login ]] || warn_dirty
 
+eval "$(mise activate zsh)"
 eval "$(sheldon source)"
 
 ssh-add -l 2>/dev/null | grep -q 'SHA256' || eval $(keychain --eval --nogui --quiet --agents ssh ~/.ssh/id_ed25519 ~/.ssh/signing-key)
