@@ -65,13 +65,11 @@ check_command ghq       || mise u -g ghq
 check_command glow      || mise u -g glow
 check_command hyperfine || mise u -g hyperfine
 check_command nvim      || mise u -g neovim
-check_command cargo     || mise u -g rust
+check_command sheldon   || mise u -g aqua:rossmacarthur/sheldon
 check_command starship  || mise u -g starship
 check_command zoxide    || mise u -g zoxide
 mise self-update -y
 mise up
-cargo install cargo-binstall --locked
-cargo binstall sheldon
 
 printf "\e[1;36mMake directories\e[m\n"
 mkdir -p $HOME/.local/state/zsh $HOME/.cache/zsh
