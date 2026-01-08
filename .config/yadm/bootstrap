@@ -61,6 +61,7 @@ check_command bat       || mise u -g bat
 check_command deno      || mise u -g deno
 check_command eza       || mise u -g eza
 check_command fzf       || mise u -g fzf
+check_command gh        || mise u -g gh
 check_command ghq       || mise u -g ghq
 check_command glow      || mise u -g glow
 check_command hyperfine || mise u -g hyperfine

@@ -24,3 +24,9 @@ defaultBranch = main
 delete-merged-branch = "!f () { git checkout $1; git pull; git branch --merged|egrep -v '\\*|develop|main'|xargs git branch -d; };f"
 [ghq]
 	vcs = gh
+[credential "https://github.com"]
+	helper = 
+	helper = !/home/kuhaku/.local/share/mise/installs/gh/2.83.2/gh_2.83.2_linux_amd64/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/home/kuhaku/.local/share/mise/installs/gh/2.83.2/gh_2.83.2_linux_amd64/bin/gh auth git-credential
