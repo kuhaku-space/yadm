@@ -22,3 +22,5 @@ default = current
 defaultBranch = main
 [alias]
 delete-merged-branch = "!f () { git checkout $1; git pull; git branch --merged|egrep -v '\\*|develop|main'|xargs git branch -d; };f"
+[ghq]
+	vcs = gh
