@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 check_command() {
   command -v "$1" >/dev/null 2>&1
@@ -32,11 +32,33 @@ if ! check_command apt; then
   exit 0
 elif confirm "apt is installed. Would you like to update it? [Y/n]"; then
   printf "Updating apt...\n"
-  sudo apt update -qq && sudo apt upgrade -qq -y
-fi
-if confirm "Would you like to install dependencies? [Y/n]"; then
   sudo apt update -qq
-  sudo apt install -qq -y build-essential libssl-dev libclang-dev cmake jq keychain zsh
+  sudo apt upgrade -qq -y
+  sudo apt autoremove -qq -y
+  sudo apt autoclean -qq -y
+  sudo apt clean -qq -y
+fi
+
+PACKAGES=(
+  "build-essential"
+  "libssl-dev"
+  "libclang-dev"
+  "cmake"
+  "jq"
+  "keychain"
+  "zsh"
+)
+
+MISSING_PACKAGES=()
+
+for pkg in "${PACKAGES[@]}"; do
+    if ! dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q "ok installed"; then
+        MISSING_PACKAGES+=("$pkg")
+    fi
+done
+if [ ${#MISSING_PACKAGES[@]} -ne 0 ]; then
+  sudo apt update -qq
+  sudo apt install -qq -y "${MISSING_PACKAGES[*]}"
   sudo apt autoremove -qq -y
   sudo apt autoclean -qq -y
   sudo apt clean -qq -y
