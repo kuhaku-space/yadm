@@ -18,8 +18,6 @@ eval "$(sheldon source)"
 
 ssh-add -l 2>/dev/null | grep -q 'SHA256' || eval $(keychain --eval --nogui --quiet --agents ssh ~/.ssh/id_ed25519 ~/.ssh/signing-key)
 
-source "$XDG_CONFIG_HOME/zsh/.aliases"
-
 setopt auto_cd
 setopt hist_ignore_all_dups
 setopt nonomatch

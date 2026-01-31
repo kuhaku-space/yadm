@@ -30,6 +30,9 @@ apply = ["source"]
 [plugins.compinit]
 inline = 'autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION" && zcompile $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION'
 
+[plugins.alias]
+inline = 'source "$XDG_CONFIG_HOME/zsh/.aliases"'
+
 [plugins.zsh-completions]
 github = 'zsh-users/zsh-completions'
 
@@ -39,11 +42,11 @@ github = "zsh-users/zsh-autosuggestions"
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
 
+[plugins.zeno]
+github = "yuki-yano/zeno.zsh"
+
 [plugins.starship]
 inline = 'eval "$(starship init zsh)"'
 
 [plugins.zoxide]
 inline = 'eval "$(zoxide init zsh)"'
-
-[plugins.zeno]
-github = "yuki-yano/zeno.zsh"
