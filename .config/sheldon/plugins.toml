@@ -47,4 +47,3 @@ inline = 'eval "$(zoxide init zsh)"'
 
 [plugins.zeno]
 github = "yuki-yano/zeno.zsh"
-apply = ["source"]
