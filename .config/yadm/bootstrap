@@ -91,6 +91,7 @@ check_command jj        || mise u -g aqua:jj-vcs/jj cargo:jj-cli
 check_command nvim      || mise u -g neovim
 check_command sheldon   || mise u -g aqua:rossmacarthur/sheldon
 check_command starship  || mise u -g starship
+check_command usage     || mise u -g usage
 check_command zoxide    || mise u -g zoxide
 mise self-update -y
 mise up
