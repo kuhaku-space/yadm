@@ -50,3 +50,7 @@ inline = 'eval "$(starship init zsh)"'
 
 [plugins.zoxide]
 inline = 'eval "$(zoxide init zsh)"'
+
+[plugins.mise-completion]
+inline = 'eval "$(mise completion zsh)"'
+
