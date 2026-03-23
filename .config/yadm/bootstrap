@@ -80,6 +80,7 @@ printf "\e[1;36mSource zshenv configuration file\e[m\n"
 printf "\e[1;36mInstall tools\e[m\n"
 check_command mise      || curl https://mise.run | sh
 check_command bat       || mise u -g bat
+check_command claude    || mise u -g claude
 check_command deno      || mise u -g deno
 check_command eza       || mise u -g eza
 check_command fzf       || mise u -g fzf
