@@ -4,7 +4,34 @@ function atcoder-bundle() {
 }
 
 function atcoder-compile() {
-  g++-14 $1 -std=gnu++20 -O2 -Wall -Wextra -DATCODER -mtune=native -march=native -fconstexpr-depth=2147483647 -fconstexpr-loop-limit=2147483647 -fconstexpr-ops-limit=2147483647
+  USER_BUILD_FLAGS=(
+    "-DNOMINMAX"
+    "-DONLINE_JUDGE"
+    "-DOR_PROTO_DLL="
+    "-DPROTOBUF_USE_DLLS"
+    "-DUSE_BOP"
+    "-DUSE_CBC"
+    "-DUSE_CLP"
+    "-DUSE_GLOP"
+    "-DUSE_LP_PARSER"
+    "-DUSE_MATH_OPT"
+    "-DUSE_PDLP"
+    "-DUSE_SCIP"
+    "-O2"
+    "-Wall"
+    "-Wextra"
+    "-fconstexpr-depth=1024"
+    "-fconstexpr-loop-limit=524288"
+    "-fconstexpr-ops-limit=2097152"
+    "-flto=auto"
+    "-ftrivial-auto-var-init=zero"
+    "-march=native"
+    "-pthread"
+    "-std=gnu++23"
+    "-Wl,--as-needed"
+    "-fopenmp"
+  )
+  g++-14 $1 -std=gnu++23 "${USER_BUILD_FLAGS[@]}"
 }
 
 function atcoder-test() {
