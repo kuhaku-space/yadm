@@ -48,17 +48,15 @@ PACKAGES=(
   "keychain"
   "zsh"
 )
-
 MISSING_PACKAGES=()
-
 for pkg in "${PACKAGES[@]}"; do
-    if ! dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q "ok installed"; then
+    if ! dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q "^install ok installed$"; then
         MISSING_PACKAGES+=("$pkg")
     fi
 done
 if [ ${#MISSING_PACKAGES[@]} -ne 0 ]; then
   sudo apt update -qq
-  sudo apt install -qq -y "${MISSING_PACKAGES[*]}"
+  sudo apt install -qq -y "${MISSING_PACKAGES[@]}"
   sudo apt autoremove -qq -y
   sudo apt autoclean -qq -y
   sudo apt clean -qq -y
@@ -96,6 +94,7 @@ check_command usage     || mise u -g usage
 check_command zoxide    || mise u -g zoxide
 mise self-update -y
 mise up
+mise prune
 
 printf "\e[1;36mMake directories\e[m\n"
 mkdir -p $HOME/.local/state/zsh $HOME/.cache/zsh
