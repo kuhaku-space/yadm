@@ -86,9 +86,9 @@ check_command gh        || mise u -g gh
 check_command ghq       || mise u -g ghq
 check_command glow      || mise u -g glow
 check_command hyperfine || mise u -g hyperfine
-check_command jj        || mise u -g aqua:jj-vcs/jj
+check_command jj        || mise u -g jujutsu
 check_command nvim      || mise u -g neovim
-check_command sheldon   || mise u -g aqua:rossmacarthur/sheldon
+check_command sheldon   || mise u -g sheldon
 check_command starship  || mise u -g starship
 check_command usage     || mise u -g usage
 check_command zoxide    || mise u -g zoxide
