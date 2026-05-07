@@ -71,6 +71,11 @@ snippets:
   - name: yadm
     keyword: y
     snippet: yadm
+  - name: yadm bootstrap
+    keyword: b
+    snippet: bootstrap
+    context:
+      lbuffer: ^yadm\s
   - name: yadm status
     keyword: st
     snippet: status
