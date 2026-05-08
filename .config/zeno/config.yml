@@ -91,3 +91,6 @@ snippets:
     snippet: commit -a -m '{{commit_message}}'
     context:
       lbuffer: ^yadm\s
+  - name: pnpm
+    keyword: p
+    snippet: pnpm
