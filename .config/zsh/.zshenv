@@ -31,5 +31,5 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 # compinit
 skip_global_compinit=1
 
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$CARGO_HOME/bin"
+typeset -U path  # PATH の重複エントリを自動で除去
+path+=("$HOME/.local/bin" "$CARGO_HOME/bin")
