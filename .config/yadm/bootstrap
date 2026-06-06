@@ -74,16 +74,20 @@ printf "\e[1;36mGenerate SSH keys\e[m\n"
 [ -e "$HOME/.ssh/signing-key" ] || ssh-keygen -a 128 -f "$HOME/.ssh/signing-key" -C "kuhakuspace2000@gmail.com"
 
 printf "\e[1;36mAppend ZDOTDIR to zshenv\e[m\n"
-tail -n 1 /etc/zsh/zshenv | grep -vq "export ZDOTDIR" && echo "\nexport ZDOTDIR=$HOME/.config/zsh" | sudo tee -a /etc/zsh/zshenv
+grep -q "export ZDOTDIR" /etc/zsh/zshenv ||
+  printf '\nexport ZDOTDIR=%s\n' "$HOME/.config/zsh" | sudo tee -a /etc/zsh/zshenv
 
 printf "\e[1;36mSource zshenv configuration file\e[m\n"
 . $HOME/.config/zsh/.zshenv
 
 printf "\e[1;36mInstall tools\e[m\n"
-check_command mise || { curl https://mise.run | sh; export PATH="$HOME/.local/bin:$PATH"; }
-mise self-update -y
-mise install
-mise prune
+# .zshenv は既に source 済みなので $HOME/.local/bin は PATH 上にある
+check_command mise || curl https://mise.run | sh
+# 新規インストール時はまだ mise が PATH 外なので明示的に呼ぶ
+MISE="$(command -v mise || echo "$HOME/.local/bin/mise")"
+"$MISE" self-update -y
+"$MISE" install
+"$MISE" prune
 
 printf "\e[1;36mMake directories\e[m\n"
 mkdir -p $HOME/.local/state/zsh $HOME/.cache/zsh
