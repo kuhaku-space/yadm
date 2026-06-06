@@ -15,7 +15,7 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export ZENO_HOME="$XDG_CONFIG_HOME/zeno"
 export ZENO_ENABLE_SOCK=1
 export ZENO_GIT_CAT="bat --color=always"
-export ZENO_GIT_TREE="exa --tree"
+export ZENO_GIT_TREE="eza --tree"
 
 # fzf
 export FZF_DEFAULT_OPTS="--reverse"
