@@ -76,25 +76,9 @@ printf "\e[1;36mSource zshenv configuration file\e[m\n"
 . $HOME/.config/zsh/.zshenv
 
 printf "\e[1;36mInstall tools\e[m\n"
-check_command mise      || curl https://mise.run | sh
-check_command bat       || mise u -g bat
-check_command claude    || mise u -g claude
-check_command deno      || mise u -g deno
-check_command eza       || mise u -g eza
-check_command fzf       || mise u -g fzf
-check_command gh        || mise u -g gh
-check_command ghq       || mise u -g ghq
-check_command glow      || mise u -g glow
-check_command hyperfine || mise u -g hyperfine
-check_command jj        || mise u -g jujutsu
-check_command nvim      || mise u -g neovim
-check_command sheldon   || mise u -g sheldon
-check_command starship  || mise u -g starship
-check_command usage     || mise u -g usage
-check_command zellij    || mise u -g zellij
-check_command zoxide    || mise u -g zoxide
+check_command mise || { curl https://mise.run | sh; export PATH="$HOME/.local/bin:$PATH"; }
 mise self-update -y
-mise up
+mise install
 mise prune
 
 printf "\e[1;36mMake directories\e[m\n"
