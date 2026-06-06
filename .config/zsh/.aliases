@@ -31,7 +31,7 @@ function atcoder-compile() {
     "-Wl,--as-needed"
     "-fopenmp"
   )
-  g++-14 $1 -std=gnu++23 "${USER_BUILD_FLAGS[@]}"
+  g++-14 $1 "${USER_BUILD_FLAGS[@]}"
 }
 
 function atcoder-test() {
