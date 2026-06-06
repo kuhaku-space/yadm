@@ -26,6 +26,10 @@ confirm() {
 
 cd $HOME
 
+printf "\e[1;36mExclude repo-only files from \$HOME\e[m\n"
+# README.md などはリポジトリには置くが $HOME には展開しない
+yadm sparse-checkout set --no-cone '/*' '!/README.md'
+
 printf "\e[1;36mInstall dependencies\e[m\n"
 if ! check_command apt; then
   printf "apt is not installed. Ignoring...\n"
