@@ -6,7 +6,7 @@ check_command() {
 }
 
 request_response() {
-  printf "$1 "
+  printf '%s ' "$1"
   read response
 }
 
