@@ -38,32 +38,23 @@ function atcoder-test() {
   find a.cpp &>/dev/null || return 1
   atcoder-bundle a.cpp >main.cpp || return 1
   atcoder-compile main.cpp || return 1
-  args=$(getopt e $*) || return 1
-  eval "set -- $args"
 
-  E_FLAG=0
+  local e_flag=0 opt
   for opt in "$@"; do
     case $opt in
-    -e)
-      E_FLAG=1
-      shift
-      ;;
-    --)
-      shift
-      break
-      ;;
+    -e) e_flag=1 ;;
     esac
   done
 
-  COMMAND="oj t -N"
-  if [[ $E_FLAG = 1 ]]; then
-    COMMAND="$COMMAND -e 1e-9"
+  local oj_args=(-N)
+  if [[ $e_flag = 1 ]]; then
+    oj_args+=(-e 1e-9)
   fi
-  eval "$COMMAND"
+  oj t "${oj_args[@]}"
 }
 
 function atcoder-test-and-clip() {
-  atcoder-test "$*" || return 1
+  atcoder-test "$@" || return 1
   xclip -selection clipboard < main.cpp
 }
 
@@ -72,11 +63,11 @@ function atcoder-random-checker() {
   atcoder-bundle a.cpp >main.cpp || return 1
   atcoder-compile main.cpp || return 1
   (
-    cd checker
-    find test.cpp &>/dev/null || return 1
-    atcoder-bundle test.cpp >test/main.cpp || return 1
-    cd test
-    atcoder-compile main.cpp || return 1
+    cd checker || exit 1
+    find test.cpp &>/dev/null || exit 1
+    atcoder-bundle test.cpp >test/main.cpp || exit 1
+    cd test || exit 1
+    atcoder-compile main.cpp || exit 1
     ./a.out
   )
 }
