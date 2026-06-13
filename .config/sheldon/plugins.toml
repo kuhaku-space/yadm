@@ -30,9 +30,6 @@ apply = ["source"]
 [plugins.compinit]
 inline = 'autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION" && zcompile $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION'
 
-[plugins.alias]
-inline = 'source "$XDG_CONFIG_HOME/zsh/.aliases"'
-
 [plugins.zsh-completions]
 github = 'zsh-users/zsh-completions'
 
