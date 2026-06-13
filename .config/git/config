@@ -1,27 +1,28 @@
 [user]
-email = kuhakuspace2000@gmail.com
-name = kuhaku-space
-signingKey = ~/.ssh/signing-key.pub
+	email = kuhakuspace2000@gmail.com
+	name = kuhaku-space
+	signingKey = ~/.ssh/signing-key.pub
 [core]
-editor = code --wait
+	editor = code --wait
 [gpg]
-format = ssh
+	format = ssh
 [commit]
-gpgsign = true
+	gpgsign = true
 [tag]
-gpgsign = true
+	gpgsign = true
 [merge]
-ff = false
+	ff = false
 [fetch]
-prune = true
+	prune = true
 [pull]
-ff = only
+	ff = only
 [push]
-default = current
+	default = current
 [init]
-defaultBranch = main
+	defaultBranch = main
 [alias]
-delete-merged-branch = "!f () { git checkout $1; git pull; git branch --merged|egrep -v '\\*|develop|main'|xargs git branch -d; };f"
+	delete-merged-branch = "!f() { git checkout \"${1:-main}\" && git pull && git branch --merged | grep -vE \"^\\*|^\\s*(develop|main|master)$\" | xargs -r git branch -d; }; f"
+	delete-gone-branch = "!f() { git checkout \"${1:-main}\" && git pull && git fetch --prune && git branch -vv | grep \"\\[[^]]*: gone\\]\" | grep -vE \"^\\*|^\\s*(develop|main|master)$\" | awk \"{print \\$1}\" | xargs -r git branch -D; }; f"
 [ghq]
 	vcs = gh
 [credential "https://github.com"]
